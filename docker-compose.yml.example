@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:18 (or whatever your image is)
+    container_name: your_container_name
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: your_password
+      POSTGRES_DB: db_name
+    ports:
+      - "port:port"
+    volumes:
+      - pg_data:/var/lib/postgresql
+    restart: unless-stopped
+
+volumes:
+  pg_data:
+    external: true
