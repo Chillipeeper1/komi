@@ -2,6 +2,7 @@ package com.komi.project.model;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -14,8 +15,11 @@ public class CommissionTemplate {
     private BigDecimal price;
     private RequestState requestState;
     @ManyToOne
-    @JoinColumn(name = "oneToManyArtistsId")
+    @JoinColumn(name = "artist_id")
     private Artist artist;
+
+    @OneToMany(mappedBy = "commissionTemplate")
+    private List<Request> requests;
 
     public UUID getCommission_template_id() {
         return commission_template_id;
